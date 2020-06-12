@@ -8,36 +8,21 @@ psycopg2.extras.register_composite('voltage', conn)
 #def home():
 #    return redirect('/static/index.html')
 
+
+
 def chart_api_db(chart, start=None, end=None):
     cur = conn.cursor()
     if chart == 'voltage':
         if start is not None:
             if end is not None:
-                cur.execute("SELECT date, cell_id, millivolts FROM cell_voltage WHERE date BETWEEN %s and %s ORDER BY date DESC", (start, end))
+                cur.execute("SELECT date, reading_arr FROM cell_voltage WHERE date BETWEEN %s and %s ORDER BY date DESC", (start, end))
             else:
-                cur.execute("SELECT date, cell_id, millivolts FROM cell_voltage WHERE date > %s ORDER BY date DESC", (start,))
+                cur.execute("SELECT date, reading_arr FROM cell_voltage WHERE date > %s ORDER BY date DESC", (start,))
         else:
             if end is not None:
-                cur.execute("SELECT date, cell_id, millivolts FROM cell_voltage WHERE date < %s ORDER BY date DESC", (end,))
+                cur.execute("SELECT date, reading_arr FROM cell_voltage WHERE date < %s ORDER BY date DESC", (end,))
             else:
-                cur.execute("SELECT date, cell_id, millivolts FROM cell_voltage ORDER BY date DESC")
-    elif chart == 'current':
-        cur.execute("Select date, cell_id, milliamps from cell_current order by date desc limit 100")
-    return jsonify(cur.fetchall())
-
-def chart_api_db_new(chart, start=None, end=None):
-    cur = conn.cursor()
-    if chart == 'voltage':
-        if start is not None:
-            if end is not None:
-                cur.execute("SELECT date, reading_arr FROM cell_voltage_new WHERE date BETWEEN %s and %s ORDER BY date DESC", (start, end))
-            else:
-                cur.execute("SELECT date, reading_arr FROM cell_voltage_new WHERE date > %s ORDER BY date DESC", (start,))
-        else:
-            if end is not None:
-                cur.execute("SELECT date, reading_arr FROM cell_voltage_new WHERE date < %s ORDER BY date DESC", (end,))
-            else:
-                cur.execute("SELECT date, reading_arr FROM cell_voltage_new ORDER BY date DESC")
+                cur.execute("SELECT date, reading_arr FROM cell_voltage ORDER BY date DESC")
     elif chart == 'current':
         cur.execute("Select date, cell_id, milliamps from cell_current order by date desc limit 100")
     return jsonify(cur.fetchall())
@@ -59,7 +44,7 @@ def chart_api_historic(chart):
         end = None
     except ValueError:
         abort(400)
-    return chart_api_db_new(chart, start, end)
+    return chart_api_db(chart, start, end)
 
 @app.route('/chart-api/live/<chart>', methods = ['GET'])
 def chart_api_live(chart):
@@ -74,4 +59,4 @@ def chart_api_live(chart):
     except ValueError:
         abort(400)
     start = end - delta
-    return chart_api_db_new(chart, start, end)
+    return chart_api_db(chart, start, end)
