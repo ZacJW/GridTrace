@@ -4,6 +4,7 @@ body {
 }
 nav.navbar{
     display: flex;
+    width: 100%;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -11,21 +12,31 @@ nav.navbar{
     box-shadow: 0 0.2em 0.2em grey;
 }
 
-nav.navbar a{
+nav.navbar > a{
     padding: 0.5em;
     text-decoration: none;
     color: black;
 }
-nav.navbar a.active{
+nav.navbar > a.active{
     background-color: lightgrey;
 }
 
-nav.navbar a:hover{
+nav.navbar > a:hover{
     background-color: greenyellow;
 }
 
 nav.navbar header{
     align-self: flex-end;
+    padding: 0.5em;
+    margin-left: auto;
+    font-weight: bold;
+}
+nav.navbar header a{
+    text-decoration: none;
+    color: black;
+}
+nav.navbar header a:hover{
+    color: rgb(80, 80, 80);
 }
 
 div.chart{
