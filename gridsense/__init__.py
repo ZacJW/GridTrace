@@ -52,11 +52,8 @@ def chart_api_live(chart):
     if chart not in allowed_charts:
         abort(404)
     end = datetime.datetime.utcnow()
-    try:
-        delta = datetime.timedelta(hours=int(request.args['hours']))
-    except KeyError:
-        delta = datetime.timedelta(hours=24)
-    except ValueError:
-        abort(400)
+    delta = datetime.timedelta(weeks=request.args.get('weeks', 0, int), days=request.args.get('days', 0, int),
+                                hours=request.args.get('hours', 0, int), minutes=request.args.get('minutes', 0, int),
+                                seconds=request.args.get('seconds', 0, int))
     start = end - delta
     return chart_api_db(chart, start, end)
