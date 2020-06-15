@@ -3,7 +3,9 @@
     <head>
         <title>GridSense</title>
         <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/Chart.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
 
     </head>
     <body>
@@ -33,8 +35,9 @@
                 <canvas id="chart-5"></canvas>
             </div>
         </div>
-        <script src="/moment.js"></script>
+        <script src="/luxon.js"></script>
         <script src="/Chart.js"></script>
+        <script src="chartjs-adapter-luxon.js"></script>
         <script src="/update-chart-cell-voltage.js"></script>
         <script type="text/javascript">
         var charts = ['chart-2', 'chart-3', 'chart-4', 'chart-5'];
