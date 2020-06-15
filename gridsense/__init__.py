@@ -15,14 +15,14 @@ def chart_api_db(chart, start=None, end=None):
     if chart == 'voltage':
         if start is not None:
             if end is not None:
-                cur.execute("SELECT date, reading_arr FROM cell_voltage WHERE date BETWEEN %s and %s ORDER BY date DESC", (start, end))
+                cur.execute("SELECT date, reading_arr FROM cell_voltage WHERE date BETWEEN %s and %s ORDER BY date ASC", (start, end))
             else:
-                cur.execute("SELECT date, reading_arr FROM cell_voltage WHERE date > %s ORDER BY date DESC", (start,))
+                cur.execute("SELECT date, reading_arr FROM cell_voltage WHERE date >= %s ORDER BY date ASC", (start,))
         else:
             if end is not None:
-                cur.execute("SELECT date, reading_arr FROM cell_voltage WHERE date < %s ORDER BY date DESC", (end,))
+                cur.execute("SELECT date, reading_arr FROM cell_voltage WHERE date <= %s ORDER BY date ASC", (end,))
             else:
-                cur.execute("SELECT date, reading_arr FROM cell_voltage ORDER BY date DESC")
+                cur.execute("SELECT date, reading_arr FROM cell_voltage ORDER BY date ASC")
     elif chart == 'current':
         cur.execute("Select date, cell_id, milliamps from cell_current order by date desc limit 100")
     return jsonify(cur.fetchall())
