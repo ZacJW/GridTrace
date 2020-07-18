@@ -10,8 +10,6 @@ var chart_config = {type: 'line',
                             xAxes: [{
                                 type: "time",
                                 display: true,
-                                time: {
-                                }
                             }],
                             yAxes: [{
                                 display: true,
@@ -99,7 +97,17 @@ function live_update(){
                 return;
             }
             for (new_dataset of datasets){
-                merge_dataset(new_dataset);
+                var merged = false;
+                for (var i = 0; i < chart_cell_voltage.data.datasets.length; i++){
+                    if (new_dataset.cell_id == chart_cell_voltage.data.datasets[i].cell_id){
+                        chart_cell_voltage.data.datasets[i].data = chart_cell_voltage.data.datasets[i].data.concat(new_dataset.data.slice(1))
+                        merged = true;
+                        break;
+                    }
+                }
+                if (!merged){
+                    chart_cell_voltage.data.datasets.push(new_dataset);
+                }
             }
             colour_datasets(chart_cell_voltage.data.datasets);
             chart_cell_voltage.data.last_moment = last_moment;
@@ -110,17 +118,4 @@ function live_update(){
     xhr.open("GET", "/chart-api/historic/voltage?start=" + encodeURIComponent(chart_cell_voltage.data.last_moment.toISO()));
     xhr.last_moment = chart_cell_voltage.data.last_moment;
     xhr.send();
-}
-
-function merge_dataset(new_dataset){
-    var merged = false;
-    for (var i = 0; i < chart_cell_voltage.data.datasets.length; i++){
-        if (new_dataset.cell_id == chart_cell_voltage.data.datasets[i].cell_id){
-            chart_cell_voltage.data.datasets[i].data = chart_cell_voltage.data.datasets[i].data.concat(new_dataset.data.slice(1))
-            merged = true;
-        }
-    }
-    if (!merged){
-        chart_cell_voltage.data.datasets.push(new_dataset);
-    }
 }
