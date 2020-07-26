@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GridSense - Dashboard</title>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/Chart.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="/">Home</a>
+            <a href="/style.css">Style</a>
+            <a class="active" href="/dashboard.html">Dashboard</a>
+            <header>
+                <a href="/">GridSense</a>
+            </header>
+        </nav>
+        <div class="dashboard_container" id="dc">
+            <section class="tile">
+                <div class="tile-top">
+                    <header>Cell Voltage</header>
+                    
+                </div>
+                <div class="legend" id="cell-voltage-legend">
+                    <div class="legend-button">
+                        <p>Show All</p>
+                        <img src="/icons/feather/eye.svg">
+                    </div>
+                    <div class="legend-button">
+                        <p>Hide All</p>
+                        <img src="/icons/feather/eye-off.svg">
+                    </div>
+                </div>
+                <div class="chart">
+                    <canvas id="chart-1"></canvas>
+                </div>
+                <div class="chart-controls">
+                    <form action="">
+                        <label>Chart Mode</label>
+                        <select>
+                            <option value="live">Live</option>
+                            <option value="fixed">Fixed</option>
+                        </select>
+                        <label>Days:</label>
+                        <input type="number">
+                        <label>Hours:</label>
+                        <input type="number">
+                        <label>Minutes:</label>
+                        <input type="number">
+                        <label>Seconds:</label>
+                        <input type="number">
+                    </form>
+                </div>
+            </section>
+            <section class="tile">
+                <div class="tile-top">
+                    <header>Power and Energy</header>
+                </div>
+            </section>
+            <section class="tile">
+                <div class="tile-top">
+                    <header>___</header>
+                </div>
+            </section>
+            <section class="tile">
+                <div class="tile-top">
+                    <header>___</header>
+                </div>
+            </section>
+            <section class="tile">
+                <div class="tile-top">
+                    <header>___</header>
+                </div>
+            </section>
+        </div>
+        <script src="/luxon.js"></script>
+        <script src="/Chart.js"></script>
+        <script src="chartjs-adapter-luxon.js"></script>
+        <!-- <script src="/cell_voltage multichart.js"></script> -->
+        <script src="/dashboard.js"></script>
+    </body>
+</html>

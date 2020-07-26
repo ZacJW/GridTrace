@@ -2,6 +2,9 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Navbar */
+
 nav.navbar{
     display: flex;
     width: 100%;
@@ -47,6 +50,7 @@ div.chart{
     /*border-style: solid;
     border-color: lightgray;*/
 }
+
 @media (orientation: landscape){
     div.big-charts div.chart{
         width: 50vw;
@@ -64,8 +68,198 @@ div.chart{
 }
 
 @media (orientation: portrait){
-    div.chart{
+    div.big-charts > div.chart, div.small-charts > div.chart{
         width: 100%;
         height: calc(50vh - 1em);
     }
 }
+
+/* Dashboard */
+
+div.dashboard_container{
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+section.tile {
+    margin: 0.5em;
+    padding: 0;
+    border-radius: 1em;
+    border: 0.2em;
+    border-style: ridge;
+    border-color: lightgrey;
+    max-width: 35em;
+    min-width: 20em;
+    flex: 1 1 30em;
+    box-shadow: 0.2em 0.2em 0.2em grey;
+    max-height: 33vh;
+    min-height: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+/* Tile */
+
+section.tile > div.tile-top {
+    padding: 0 0.8em;
+    border-top-left-radius: 0.8em;
+    border-top-right-radius: 0.8em;
+    background-color: rgb(240, 240, 240);
+}
+
+div.tile-top >  header{
+    padding: 0.2em 0;
+}
+
+section.tile > div.chart {
+    height: calc(80% - 2.4em);
+    padding: 0.2em;
+}
+
+section.tile > div.legend{
+    padding: 0.2em;
+    max-height: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+}
+
+@media (max-height : 25em){
+    div.dashboard_container > section.tile {
+        min-height: calc(100vh - 5em);
+        min-width: calc(100% - 2em);
+    }
+}
+
+/* Legend */
+
+div.legend > div.legend-button {
+    margin:0.2em;
+    border: 0.15em;
+    border-radius: 0.4em;
+    border-color: grey;
+    border-style: solid;
+    height: 1.25em;
+    position: relative;
+    user-select: none;
+    padding: 0;
+}
+
+div.legend > div.legend-button:hover {
+    border-color: lightgray;
+}
+
+div.legend-button > p {
+    display: inline;
+    vertical-align: middle;
+    font-size: small;
+    margin-left: 0.2em;
+    margin-right: 1.8em;
+}
+
+div.legend-button > img {
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    right: 0;
+    top: 0;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 0.1em;
+}
+
+
+div.legend > div.cell {
+    margin:0.2em;
+    border: 0.15em;
+    border-radius: 0.4em;
+    border-color: grey;
+    border-style: solid;
+    height: 1.25em;
+    position: relative;
+    user-select: none;
+    padding: 0;
+}
+div.cell > p {
+    display: inline;
+    vertical-align: middle;
+    font-size: small;
+    margin-left: 0.2em;
+    margin-right: 1.8em;
+}
+
+div.cell-level {
+    width: 50%;
+    height: 100%;
+    background-color: hsl(60, 100%, 85%);
+    position: absolute;
+    z-index: -1;
+    left: 0;
+}
+
+div.cell > img {
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    right: 0;
+    top: 0;
+    box-sizing: border-box;
+    height: 100%;
+    border: 0.1em;
+    padding: 0.1em;
+    border-color: gray;
+    border-radius: 0.2em;
+    border-style:  outset;
+}
+
+div.cell > div.bump {
+    position: absolute;
+    box-sizing: border-box;
+    border: inherit;
+    border-color: inherit;
+    border-radius: 0.1em;
+    right: -0.3em;
+    top: calc(50% - 0.3em);
+    height: 0.6em;
+    width: 0.2em;
+    z-index: -1;
+
+}
+
+div.cell > img:hover {
+    border-color: lightgray;
+}
+
+section.tile > div.chart-controls {
+    padding: 0em 0.8em;
+}
+
+div.chart-controls > form  {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0.2em 0;
+}
+
+div.chart-controls input {
+    width: 4em;
+    display: inline-block;
+}
+div.chart-controls input.date-time {
+    width: auto;
+}
+
+div.chart-controls label, div.chart-controls select {
+    margin: 0 0.1em;
+    display: inline-block;
+}
+
+/* @media (max-width: 68.7em){
+    div.dashboard_container {
+        justify-content: space-evenly;
+    }
+} */
