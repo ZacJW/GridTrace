@@ -1,0 +1,33 @@
+CREATE FUNCTION cell_id_check() RETURNS trigger AS
+$function$
+DECLARE
+    id_in_table integer;
+BEGIN
+    SELECT DISTINCT cell_id INTO id_in_table FROM cell WHERE cell_id = NEW.cell_id;
+    -- Check if cell_id is in cell table
+    IF id_in_table IS NULL THEN
+        INSERT INTO cell (cell_id) VALUES (NEW.cell_id);
+    END IF;
+    RETURN NEW;
+END;
+$function$
+LANGUAGE plpgsql;
+
+CREATE TABLE cell(
+    cell_id SERIAL PRIMARY KEY,
+    capacity integer,
+    resistance integer,
+    installed_on timestamp (0) with time zone DEFAULT current_timestamp NOT NULL,
+    uninstalled_on timestamp (0) with time zone
+);
+
+CREATE TABLE cell_voltage(
+    date_time timestamp (0) with time zone DEFAULT current_timestamp NOT NULL,
+    cell_id integer NOT NULL REFERENCES cell(cell_id),
+    millivolts integer NOT NULL,
+    PRIMARY KEY (date_time,cell_id)
+);
+CREATE INDEX cell_voltage_date_time_index ON cell_voltage(date_time);
+
+CREATE TRIGGER cell_id_check BEFORE INSERT ON cell_voltage
+    FOR EACH ROW EXECUTE FUNCTION cell_id_check();
