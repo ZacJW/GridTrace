@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GridSense</title>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/Chart.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+        <nav class="navbar">
+            <a class="active" href="/">Home</a>
+            <a href="/style.css">Style</a>
+            <a href="/dashboard.html">Dashboard</a>
+            <header>
+                <a href="/">GridSense</a>
+            </header>
+        </nav>
+        <div class="big-charts">
+            <div class="chart">
+                <canvas id="chart-1"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="chart-2"></canvas>
+            </div>
+        </div>
+        <div class="small-charts">
+            <div class="chart">
+                <canvas id="chart-3"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="chart-4"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="chart-5"></canvas>
+            </div>
+        </div>
+        <script src="/luxon.js"></script>
+        <script src="/Chart.js"></script>
+        <script src="chartjs-adapter-luxon.js"></script>
+        <script src="/update-chart-cell-voltage.js"></script>
+        <script type="text/javascript">
+        var charts = ['chart-2', 'chart-3', 'chart-4', 'chart-5'];
+        for (ID of charts){
+            var ctx = document.getElementById(ID).getContext('2d');
+            var chartX = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [{
+                        label: 'My First dataset',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [0, 10, 5, 2, 20, 30, 45]
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true
+                }
+            });
+        }
+        </script>
+    </body>
+</html>
