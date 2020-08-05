@@ -25,9 +25,79 @@ CREATE TABLE cell_voltage(
     date_time timestamp (0) with time zone DEFAULT current_timestamp NOT NULL,
     cell_id integer NOT NULL REFERENCES cell(cell_id),
     millivolts integer NOT NULL,
-    PRIMARY KEY (date_time,cell_id)
+    PRIMARY KEY (date_time, cell_id)
 );
-CREATE INDEX cell_voltage_date_time_index ON cell_voltage(date_time);
 
 CREATE TRIGGER cell_id_check BEFORE INSERT ON cell_voltage
     FOR EACH ROW EXECUTE FUNCTION cell_id_check();
+
+CREATE TABLE cell_current(
+    date_time timestamp (0) with time zone DEFAULT current_timestamp NOT NULL,
+    cell_id integer NOT NULL REFERENCES cell(cell_id),
+    milliamps integer NOT NULL,
+    PRIMARY KEY (date_time, cell_id)
+);
+
+CREATE TRIGGER cell_id_check BEFORE INSERT ON cell_current
+    FOR EACH ROW EXECUTE FUNCTION cell_id_check();
+
+CREATE FUNCTION panel_id_check() RETURNS trigger AS
+$function$
+DECLARE
+    id_in_table integer;
+BEGIN
+    SELECT DISTINCT panel_id INTO id_in_table FROM panel WHERE panel_id = NEW.panel_id;
+    -- Check if cell_id is in cell table
+    IF id_in_table IS NULL THEN
+        INSERT INTO panel (panel_id) VALUES (NEW.panel_id);
+    END IF;
+    RETURN NEW;
+END;
+$function$
+LANGUAGE plpgsql;
+
+CREATE TABLE panel(
+    panel_id SERIAL PRIMARY KEY,
+    installed_on timestamp (0) with time zone DEFAULT current_timestamp NOT NULL,
+    uninstalled_on timestamp (0) with time zone
+);
+
+CREATE TABLE panel_voltage(
+    date_time timestamp (0) with time zone DEFAULT current_timestamp NOT NULL,
+    panel_id integer NOT NULL REFERENCES panel(panel_id),
+    millivolts integer NOT NULL,
+    PRIMARY KEY (date_time, panel_id)
+);
+
+CREATE TRIGGER panel_id_check BEFORE INSERT ON panel_voltage
+    FOR EACH ROW EXECUTE FUNCTION panel_id_check();
+
+CREATE TABLE panel_current(
+    date_time timestamp (0) with time zone DEFAULT current_timestamp NOT NULL,
+    panel_id integer NOT NULL REFERENCES panel(panel_id),
+    milliamps integer NOT NULL,
+    PRIMARY KEY (date_time, panel_id)
+);
+
+CREATE TRIGGER panel_id_check BEFORE INSERT ON panel_current
+    FOR EACH ROW EXECUTE FUNCTION panel_id_check();
+
+CREATE TABLE power_battery(
+    date_time timestamp (0) with time zone DEFAULT current_timestamp PRIMARY KEY,
+    watts integer NOT NULL
+);
+
+CREATE TABLE power_solar(
+    date_time timestamp (0) with time zone DEFAULT current_timestamp PRIMARY KEY,
+    watts integer NOT NULL
+);
+
+CREATE TABLE power_grid(
+    date_time timestamp (0) with time zone DEFAULT current_timestamp PRIMARY KEY,
+    watts integer NOT NULL
+);
+
+CREATE TABLE power_home(
+    date_time timestamp (0) with time zone DEFAULT current_timestamp PRIMARY KEY,
+    watts integer NOT NULL
+);
