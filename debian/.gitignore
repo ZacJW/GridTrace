@@ -1,0 +1,6 @@
+gridsense.*.debhelper
+gridsense.substvars
+gridsense/
+gridsense-*/
+files
+debhelper-build-stamp

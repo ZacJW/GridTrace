@@ -1,0 +1,5 @@
+gridsense (0.1.0) UNRELEASED; urgency=low
+
+  * gridsense: Initial debian packaging
+
+ -- Zac Wilson <zac@zacjw.com> Day, 01 Jan 2014 12:34:56 +0000

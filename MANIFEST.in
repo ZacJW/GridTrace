@@ -1,0 +1,1 @@
+recursive-include gridsense-web/static *.html *.css *.js *.svg LICENSE

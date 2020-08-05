@@ -1,0 +1,6 @@
+flask
+uwsgi
+psycopg2
+requests
+defusedxml
+ssdpy

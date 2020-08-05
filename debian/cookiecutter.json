@@ -1,0 +1,13 @@
+{
+    "_template": "https://github.com/Springerle/dh-virtualenv-mold.git",
+    "distro": "UNRELEASED",
+    "email": "zac@zacjw.com",
+    "full_name": "Zac Wilson",
+    "package": "gridsense",
+    "repo_name": "debian",
+    "short_description": "Statistics server for micro-generator and grid-storage installations",
+    "snake": "/usr/bin/python3",
+    "url": "https://github.com/ZacJW/GridSense",
+    "version": "0.1.0",
+    "year": "2020"
+}
