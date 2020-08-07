@@ -1,0 +1,14 @@
+[Unit]
+Description=GridSense Data Aggregator Service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=gridsense
+ExecStart=/usr/share/gridsense/scripts/gridsense-data.sh
+
+[Install]
+WantedBy=multi-user.target
