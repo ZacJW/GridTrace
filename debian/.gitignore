@@ -4,3 +4,4 @@ gridsense/
 gridsense-*/
 files
 debhelper-build-stamp
+gridsense.debhelper.log

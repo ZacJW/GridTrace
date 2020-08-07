@@ -1,3 +1,4 @@
-gridsense.sock
 __pycache__/
-gridsense/__pycache__/
+.vscode/
+dist/
+GridSense.egg-info/
