@@ -1,0 +1,6 @@
+etc/gridsense/nginx-sites/gridsense /etc/gridsense/nginx-sites
+etc/gridsense/certs/webserver.conf /etc/gridsense/certs
+etc/gridsense/certs/generate-cert.sh /etc/gridsense/certs
+usr/share/gridsense/scripts/gridsense-data.sh /usr/share/gridsense/scripts
+usr/share/gridsense/scripts/gridsense-web.sh /usr/share/gridsense/scripts
+usr/share/gridsense/web/* /usr/share/gridsense/web
