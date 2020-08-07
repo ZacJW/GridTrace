@@ -11,5 +11,9 @@ set -e
 #
 #   dh_venv_package         Name of the Debian package
 #   dh_venv_install_dir     Root directory for the installed virtualenv
+adduser --quiet --system --no-create-home --home /nonexistent --group gridsense
+chown :www-data -R /usr/share/gridsense/web
+chmod +x /etc/gridsense/certs/generate-cert.sh
+ln -s -f /etc/gridsense/nginx-sites/gridsense /etc/nginx/sites-available/
 
 exit 0
