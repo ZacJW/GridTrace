@@ -1,11 +1,7 @@
 import threading
-import psycopg2, psycopg2.sql
-SSDP_WAIT_PERIOD = 10 #seconds
-SSDP_SEARCH_TARGET = "urn:grid-sense:service:data-probe:1"
-SSDP_MX = 3 #seconds
-DATA_PROBE_TTL = 40 #seconds
-WORKER_REQUEST_PERIOD = 15 # seconds
-WORKER_RETRY_PERIOD = 5
+import psycopg2, psycopg2.sql, configparser
+from .config import *
+
 print_lock = threading.Lock()
 
 class Data_Probe(threading.Thread):

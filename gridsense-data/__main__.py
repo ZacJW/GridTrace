@@ -2,7 +2,7 @@ from ssdpy import SSDPClient
 client = SSDPClient()
 import time
 from .__init__ import *
-db_details = {"dbname":"gridsense", "user":"data_aggregator", "password":"ErL8xakHT4rxUpUG", "host":"localhost"}
+from .config import *
 
 data_probes = {}
 
