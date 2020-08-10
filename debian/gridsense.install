@@ -4,3 +4,4 @@ etc/gridsense/certs/generate-cert.sh /etc/gridsense/certs
 usr/share/gridsense/scripts/gridsense-data.sh /usr/share/gridsense/scripts
 usr/share/gridsense/scripts/gridsense-web.sh /usr/share/gridsense/scripts
 usr/share/gridsense/web/* /usr/share/gridsense/web
+etc/gridsense/gridsense.ini /etc/gridsense
