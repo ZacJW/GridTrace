@@ -15,5 +15,7 @@ adduser --quiet --system --no-create-home --home /nonexistent --group gridsense
 chown :www-data -R /usr/share/gridsense/web
 chmod +x /etc/gridsense/certs/generate-cert.sh
 ln -s -f /etc/gridsense/nginx-sites/gridsense /etc/nginx/sites-available/
+chown gridsense /etc/gridsense/gridsense-data-auth.conf
+chmod o-r /etc/gridsense/gridsense-data-auth.conf
 
 exit 0
