@@ -1,5 +1,5 @@
 [Unit]
-Description=GridSense uWSGI Service
+Description=GridTrace uWSGI Service
 After=network.target
 StartLimitIntervalSec=0
 
@@ -7,11 +7,11 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=1
-User=gridsense
+User=gridtrace
 Group=www-data
-RuntimeDirectory=gridsense-web
+RuntimeDirectory=gridtrace-web
 RuntimeDirectoryMode=0750
-ExecStart=/usr/share/gridsense/scripts/gridsense-web.sh
+ExecStart=/usr/share/gridtrace/scripts/gridtrace-web.sh
 
 [Install]
 WantedBy=multi-user.target

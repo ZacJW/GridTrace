@@ -1,13 +1,12 @@
 #!/bin/bash
-echo "Linking WAN Proxy"
-out=$(ln -s /etc/nginx/sites-available/gridsense-wan /etc/nginx/sites-enabled/)
+echo "Unlinking WAN Proxy"
+out=$(rm /etc/nginx/sites-enabled/gridtrace-wan)
 if [ $? -ne 0 ]
 then
     echo -n $out
 else
-    echo "Link created"
+    echo "Link removed"
 fi
-sleep 2s
 echo "Reloading Nginx"
 out=$(/usr/sbin/nginx -s reload)
 if [ $? -ne 0 ]
@@ -16,4 +15,6 @@ then
 else
     echo "Nginx reloaded"
 fi
+echo "Stopping freelan"
+start-stop-daemon --stop --pid $MAINPID
 exit 0

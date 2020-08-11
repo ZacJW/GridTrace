@@ -1,5 +1,5 @@
-gridsense (0.1.0) UNRELEASED; urgency=low
+gridtrace (0.1.0) UNRELEASED; urgency=low
 
-  * gridsense: Initial debian packaging
+  * gridtrace: Initial debian packaging
 
  -- Zac Wilson <zac@zacjw.com>  Thu, 07 Aug 2020 23:42:00 +0100

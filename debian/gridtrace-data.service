@@ -1,5 +1,5 @@
 [Unit]
-Description=GridSense Data Aggregator Service
+Description=GridTrace Data Aggregator Service
 After=network.target
 StartLimitIntervalSec=0
 
@@ -7,8 +7,8 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=1
-User=gridsense
-ExecStart=/usr/share/gridsense/scripts/gridsense-data.sh
+User=gridtrace
+ExecStart=/usr/share/gridtrace/scripts/gridtrace-data.sh
 
 [Install]
 WantedBy=multi-user.target

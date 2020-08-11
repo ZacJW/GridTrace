@@ -1,18 +1,18 @@
-Source: gridsense
+Source: gridtrace
 Section: contrib/python
 Priority: optional
 Maintainer: Zac Wilson <zac@zacjw.com>
 Build-Depends: debhelper (>= 9), python3, python3-venv, python3-dev, dh-virtualenv (>= 1.1), tar, dh-systemd (>= 1.5)
 Standards-Version: 3.9.5
-Homepage: https://github.com/ZacJW/GridSense
+Homepage: https://github.com/ZacJW/GridTrace
 
-Package: gridsense
+Package: gridtrace
 Architecture: any
 Pre-Depends: dpkg (>= 1.16.1), python3, python3-venv, ${misc:Pre-Depends}
 Depends: ${python:Depends}, ${python3:Depends}, ${misc:Depends}, ${shlibs:Depends}, nginx (>= 1.14), libpq5 (>= 11), adduser (>= 3)
 Description: Statistics server for micro-generator and grid-storage installations
     .
-    This is a distribution of "gridsense" as a self-contained
+    This is a distribution of "gridtrace" as a self-contained
     Python virtualenv wrapped into a Debian package ("omnibus" package,
     all passengers on board). The packaged virtualenv is kept in sync with
     the host's interpreter automatically.

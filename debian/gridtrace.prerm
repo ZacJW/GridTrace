@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+#DEBHELPER#
+
+SITE_LINK=/etc/nginx/sites-available/gridtrace
+if [ -f "$SITE_LINK" ]
+then
+    rm -f /etc/nginx/sites-available/gridtrace
+fi
+exit 0

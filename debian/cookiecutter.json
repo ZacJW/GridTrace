@@ -3,11 +3,11 @@
     "distro": "UNRELEASED",
     "email": "zac@zacjw.com",
     "full_name": "Zac Wilson",
-    "package": "gridsense",
+    "package": "gridtrace",
     "repo_name": "debian",
     "short_description": "Statistics server for micro-generator and grid-storage installations",
     "snake": "/usr/bin/python3",
-    "url": "https://github.com/ZacJW/GridSense",
+    "url": "https://github.com/ZacJW/GridTrace",
     "version": "0.1.0",
     "year": "2020"
 }

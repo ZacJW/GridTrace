@@ -52,5 +52,5 @@ override_dh_strip:
 #	dh_shlibdeps -X/x86/ -X/Cython/ -X/PIL/ -X/psycopg2/ -X/_yaml
 
 override_dh_installinit:
-	dh_installinit --no-scripts --name=gridsense-web
-	dh_installinit --no-scripts --name=gridsense-data
+	dh_installinit --no-scripts --name=gridtrace-web
+	dh_installinit --no-scripts --name=gridtrace-data

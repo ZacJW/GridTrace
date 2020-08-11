@@ -1,0 +1,9 @@
+etc/gridtrace/nginx-sites/gridtrace /etc/gridtrace/nginx-sites
+etc/gridtrace/certs/webserver.conf /etc/gridtrace/certs
+etc/gridtrace/certs/generate-cert.sh /etc/gridtrace/certs
+usr/share/gridtrace/scripts/gridtrace-data.sh /usr/share/gridtrace/scripts
+usr/share/gridtrace/scripts/gridtrace-web.sh /usr/share/gridtrace/scripts
+usr/share/gridtrace/web/* /usr/share/gridtrace/web
+etc/gridtrace/gridtrace.ini /etc/gridtrace
+etc/gridtrace/gridtrace-data.conf /etc/gridtrace
+etc/gridtrace/gridtrace-data-auth.conf /etc/gridtrace
