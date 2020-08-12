@@ -3,3 +3,4 @@ uwsgi
 psycopg2
 requests
 defusedxml
+ssdpy >= 0.3.0
